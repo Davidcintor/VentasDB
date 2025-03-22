@@ -28,12 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            BtnGuardar = new Button();
+            SuspendLayout();
+            // 
+            // BtnGuardar
+            // 
+            BtnGuardar.Location = new Point(354, 323);
+            BtnGuardar.Name = "BtnGuardar";
+            BtnGuardar.Size = new Size(165, 56);
+            BtnGuardar.TabIndex = 0;
+            BtnGuardar.Text = "Sin Transaccion";
+            BtnGuardar.UseVisualStyleBackColor = true;
+            BtnGuardar.Click += BtnGuardar_Click;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(BtnGuardar);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button BtnGuardar;
     }
 }
