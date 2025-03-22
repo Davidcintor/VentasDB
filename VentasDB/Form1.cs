@@ -15,7 +15,7 @@ namespace VentasDB
         private Venta ObtenerVentaDemo()
         {
             Venta venta = new Venta();
-            venta.Cliente = "Cliente 1";
+            venta.Cliente = "Antonio";
             venta.Total = 2000;
             venta.Conceptos = new List<VentaConcepto>
             {
@@ -45,18 +45,18 @@ namespace VentasDB
 
                 using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    string query = "insert into Clientes " +
-                        "(nombre,telefono,email)" +
-                        " values " +
-                        "(@nombre,@telefono,@email)";
+                    string query = "INSERT INTO Ventas" +
+                                  " (Cliente, Total)" +
+                                  " VALUES" +
+                                  " (@Cliente, @Total);" +
+                                  " SELECT SCOPE_IDENTITY()";
 
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.CommandType = CommandType.Text;
 
-                        cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
-                        cmd.Parameters.AddWithValue("@telefono", txtTelefono.Text);
-                        cmd.Parameters.AddWithValue("@email", txtEmail.Text);
+                        cmd.Parameters.AddWithValue("@Cliente", venta.Cliente);
+                        cmd.Parameters.AddWithValue("@Total", venta.Total);
 
                         con.Open();
                         int registrosAfectados = cmd.ExecuteNonQuery();
